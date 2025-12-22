@@ -1,36 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Forecast</title>
+    <!-- tailwindCSS using CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <link rel="stylesheet" href="dummy.css">  <!-- remove this later -->
-</head>
-<body>
-<header class="nav_bar">
-    <h1>Weather Forecast</h1>
-    <label for="city"></label>
-    <input type="text" id="city" value="enter city">
-    <p>or</p>
-    <p>choose by current location</p>
-</header>
+  </head>
+  <body class="bg-green-100 min-h-screen p-4">
+    <!-- Navigation Bar -->
+    <header class="nav_bar flex items-center justify-between p-8 bg-white shadow-lg rounded-2xl m-4">
+      <h1 class="text-2xl font-bold text-gray-800"> Weather Forecast </h1>
 
-<main>
-    <div class="main_content">
-    <div>current day forecast</div>
-    <p>5 day forecast</p>
-    <div>day1</div>
-    <div>day2</div>
-    <div>day3</div>
-    <div>day4</div>
-    <div>day5</div>
-    </div>
-</main>
+      <div class="flex items-center justify-center gap-6 flex-1">
 
-<footer>
-    <p> Footer content</p>
-</footer>
+        <div class="flex items-center gap-2">
+          <label for="city" class="text-gray-700 font-semibold">City:</label>
+          <input
+            type="text"
+            id="city"
+            placeholder="enter city"
+            class="border-2 border-gray-400 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition"/>
+        </div>
 
-</body>
+        <div class="flex items-center gap-2">
+          <p class="text-gray-600 font-medium">or</p>
+          <button type="button" class="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition font-semibold flex items-center gap-2"> Use Current Location </button>
+        </div>
+
+      </div>
+
+      <div class="flex gap-3">
+        <button type="button" class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition font-semibold"> 
+          dark mode 
+        </button>
+        <button type="button" class="bg-yellow-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-yellow-400 transition font-semibold">
+          light mode
+        </button>
+      </div>
+
+    </header>
+    <!-- Current Day Forecast -->
+    <main class="p-8">
+      <div class="main_content max-w-6xl mx-auto flex gap-8">
+        <div class="flex-1">
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">
+              Current Day Forecast
+            </h2>
+          </div>
+        </div>
+
+
+        <div class="flex-1">
+
+          <div class="flex flex-col gap-4">
+
+            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
+              Day 1
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
+              Day 2
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
+              Day 3
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
+              Day 4
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
+              Day 5
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 </html>
