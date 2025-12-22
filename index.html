@@ -6,6 +6,7 @@
     <title>Weather Forecast</title>
     <!-- tailwindCSS using CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
 
   </head>
   <body class="bg-green-100 min-h-screen p-4">
@@ -25,8 +26,9 @@
         </div>
 
         <div class="flex items-center gap-2">
+          <button id="search_button" type="button" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition font-semibold">Search</button>
           <p class="text-gray-600 font-medium">or</p>
-          <button type="button" class="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition font-semibold flex items-center gap-2"> Use Current Location </button>
+          <button id="location" type="button" class="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition font-semibold flex items-center gap-2"> Use Current Location </button>
         </div>
 
       </div>
@@ -49,10 +51,11 @@
             <h2 class="text-2xl font-bold text-gray-800 mb-4">
               Current Day Forecast
             </h2>
+            <p id="weather1" class="text-gray-600">Search a city or use your current location.</p>
           </div>
         </div>
 
-
+        <!-- next 5 days of forecast -->
         <div class="flex-1">
 
           <div class="flex flex-col gap-4">
@@ -76,7 +79,7 @@
             <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
               Day 5
             </div>
-            
+
           </div>
         </div>
       </div>
