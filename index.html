@@ -6,40 +6,34 @@
     <title>Weather Forecast</title>
     <!-- tailwindCSS using CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="icon" href="/icon/Weather_31085.ico" type="image/png">
     <link rel="stylesheet" href="style.css">
 
   </head>
-  <body class="bg-green-100 min-h-screen p-4">
+
+  <body class="bg-green-100 min-h-screen p-4" id="mainBody">
+
     <!-- Navigation Bar -->
     <header class="nav_bar flex items-center justify-between p-8 bg-white shadow-lg rounded-2xl m-4">
       <h1 class="text-2xl font-bold text-gray-800"> Weather Forecast </h1>
 
-      <div class="flex items-center justify-center gap-6 flex-1">
-
+      <div class="flex items-center gap-4">
         <div class="flex items-center gap-2">
           <label for="city" class="text-gray-700 font-semibold">City:</label>
-          <input
-            type="text"
-            id="city"
-            placeholder="enter city"
-            class="border-2 border-gray-400 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition"/>
+          <div class="relative">
+            <input
+              type="text"
+              id="city"
+              placeholder="enter city"
+              class="border-2 border-gray-400 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition"/>
+            <ul id="recentDropdown" class="absolute bg-white border border-gray-300 rounded-lg mt-1 w-full shadow-md z-10 hidden max-h-48 overflow-y-auto">
+            </ul>
+          </div>
         </div>
 
-        <div class="flex items-center gap-2">
-          <button id="search_button" type="button" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition font-semibold">Search</button>
-          <p class="text-gray-600 font-medium">or</p>
-          <button id="location" type="button" class="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition font-semibold flex items-center gap-2"> Use Current Location </button>
-        </div>
-
-      </div>
-
-      <div class="flex gap-3">
-        <button type="button" class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition font-semibold"> 
-          dark mode 
-        </button>
-        <button type="button" class="bg-yellow-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-yellow-400 transition font-semibold">
-          light mode
-        </button>
+        <button id="search_button" type="button" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition font-semibold">Search</button>
+        <p>or</p>
+        <button id="location" type="button" class="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 transition font-semibold"> Use Current Location </button>
       </div>
 
     </header>
@@ -48,38 +42,23 @@
       <div class="main_content max-w-6xl mx-auto flex gap-8">
         <div class="flex-1">
           <div class="bg-white rounded-lg shadow-lg p-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">
-              Current Day Forecast
-            </h2>
-            <p id="weather1" class="text-gray-600">Search a city or use your current location.</p>
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-2xl font-bold text-gray-800">
+                Today's Weather
+              </h2>
+              <button id="tempToggle" type="button" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-semibold">
+                °C / °F
+              </button>
+            </div>
+            <div id="errorBox" class="hidden mb-3 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm"></div>
+            <div id="alertBox" class="hidden mb-3 p-3 bg-orange-100 border border-orange-400 text-orange-800 rounded-lg text-sm font-semibold"></div>
+            <div id="weather1" class="text-gray-600">Search a city or use your current location.</div>
           </div>
         </div>
 
-        <!-- next 5 days of forecast -->
+        <!-- next 5 days of forecast (added dynamically)-->
         <div class="flex-1">
-
-          <div class="flex flex-col gap-4">
-
-            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
-              Day 1
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
-              Day 2
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
-              Day 3
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
-              Day 4
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md p-4 text-center font-semibold text-gray-700 hover:shadow-lg transition flex-1">
-              Day 5
-            </div>
-
+          <div id="forecastContainer" class="flex flex-col gap-4">
           </div>
         </div>
       </div>
