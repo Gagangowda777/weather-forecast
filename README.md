@@ -4,6 +4,7 @@ The project weather forecast application uses JavaScript, HTML, and CSS. Which r
 Tools and Technologies used
 - HTML 
 - TailwindCss
+- CSS
 - JavaScript 
 
 API keys
@@ -15,3 +16,4 @@ Features of this project
 - can toggle betweem light and dark mode 
 - can get weather report for current day and for the next 5 days 
 - can use across multiple devices
+
